@@ -1,17 +1,26 @@
-import React, { Component } from 'react'
-import Bar from './components/bar/Bar';
+import React, { Component } from 'react';
+import HomePage  from './components/homePage/HomePage';
+// import SignIn from './components/modals/signIn/SignIn';
+// import SignOut from './components/signOut/SignOut';
+// import Feature from './components/Feature/Feature';
+
+
 
 
 
 class App extends Component {
+  state = {
 
-  
+  }
+
+
   render() {
     return (
       <div>
-        <Bar />
-        hello there
-      
+        {/*<SignIn />*/}
+        <HomePage />
+         {/*<SignOut/>
+        <Feature /> featuer page after , signout will be here*/ }
       </div>
 
     )

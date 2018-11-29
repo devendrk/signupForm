@@ -2,7 +2,6 @@ import React, { Component} from 'react'
 import './Bar.css';
 import MappleLogo from '../../images/logo100x100.png';
 
-import SignupModal from '../modals/SignupModal';
 
 class Bar extends Component {
 
@@ -35,10 +34,7 @@ class Bar extends Component {
                         </div>
                     </div>
                 </a> 
-                <button onClick = {this.handleLogin} className="login-right  ">log in</button>  
-                <button onClick = {this.handleSignup} className="login-right  ">sign up </button>
-                <SignupModal showModel = {this.state.showModel}
-                />
+             
         
                  
                 
