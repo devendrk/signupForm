@@ -17,10 +17,9 @@ class App extends Component {
   render() {
     return (
       <div>
-        {/*<SignIn />*/}
         <HomePage />
-         {/*<SignOut/>
-        <Feature /> featuer page after , signout will be here*/ }
+         {/*
+        <Feature /> featuer page after sign in */ }
       </div>
 
     )
