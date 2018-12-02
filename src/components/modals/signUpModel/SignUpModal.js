@@ -3,9 +3,8 @@ import { Field, reduxForm } from "redux-form";
 
 import Button from "../../button";
 import Modal from "react-modal";
-import "./SignIn.css";
 
-class SignIn extends Component {
+class SignUp extends Component {
   state = {
     isModelOpen: false
   };
@@ -28,13 +27,19 @@ class SignIn extends Component {
             isOpen={this.state.isModelOpen}
             isClosed={this.state.isModelOpen}
           >
-            <h1>Log-in</h1> <br />
-            <form name="signIn" onSubmit={this.props.handleSubmit}>
+            <h1>SignUp</h1> <br />
+            <form name="signUp">
               <Field
                 component="input"
                 type="text"
-                name="userName"
-                placeholder="Username or email"
+                name="user"
+                placeholder="Username "
+              />
+              <Field
+                component="input"
+                type="text"
+                name="email"
+                placeholder="email "
               />
               <Field
                 component="input"
@@ -43,7 +48,7 @@ class SignIn extends Component {
                 placeholder="Password"
               />
               <div className="btn-section">
-                <Button className="custom-btn" label="Sign In" type="submit" />
+                <Button className="custom-btn" label="Sign up" type="button" />
                 <Button
                   className="custom-btn"
                   onClick={this.closeModel}
@@ -52,15 +57,12 @@ class SignIn extends Component {
                 />
               </div>
             </form>
-            <div className="login-help">
-              <a href="/">Register</a> • <a href="/">Forgot Password</a>
-            </div>
           </Modal>
         ) : (
           <div className="bar-right-section">
             <Button
               className="custom-btn"
-              label="Login"
+              label="signUp"
               type="submit"
               onClick={this.openModel}
             />
@@ -72,7 +74,7 @@ class SignIn extends Component {
 }
 
 const signInForm = reduxForm({
-  form: "signIn"
-})(SignIn);
+  form: "signUp"
+})(SignUp);
 
 export default signInForm;

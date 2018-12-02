@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import HomePage  from './components/homePage/HomePage';
+import HomePage  from './containers/homePage/HomePage';
 // import SignIn from './components/modals/signIn/SignIn';
 // import SignOut from './components/signOut/SignOut';
 // import Feature from './components/Feature/Feature';

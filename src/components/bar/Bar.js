@@ -1,49 +1,65 @@
-import React, { Component} from 'react'
-import './Bar.css';
-import MappleLogo from '../../images/logo100x100.png';
+import React, { Component } from "react";
+import { connect } from "react-redux";
+import { reducer } from "../../store/reducer";
+import { getFormValues } from 'redux-form';
 
+import SignIn from '../modals/signIn/SignIn';
+import SignUp from '../modals/signUpModel/SignUpModal';
+import "./Bar.css";
+import MappleLogo from "../../images/logo100x100.png";
 
 class Bar extends Component {
-
-    state = { 
-        showModel: false
-    };
-
-    handleLogin = ()=>{
-        this.setState({
-            showModel: !this.state.showModel
-        })
-    }
-
-    handleSignup = ()=> {
-        this.setState({
-        showModel: !this.state.showModel
-    })
-    }
-    render(){
-        return (
-            <div className='bar'>
-                <a rel="noopener noreferrer" className="mapple" href="https://mapple.io/" target="_blank">
-                    <div className="titles no_select">
-                        <div className="title_main">
-                            <div className="logo">
-                                <img src={MappleLogo} alt='mapple logo' />
-                            </div>
-                            <div className="title_main_text">MAPPLE</div>
-                            <div className="title_sub">Analyst</div>  
-                        </div>
-                    </div>
-                </a> 
-             
-        
-                 
-                
-        
-            </div>
-          )
-    }
   
- 
+
+  handleLogin = () => {
+    let showSignInModel = '';
+    const { getState } = this.props;
+    showSignInModel= true
+    getState(showSignInModel);
+  };
+  
+  handleSignup = () => {
+    let showSignInModel = '';
+    const { getState } = this.props;
+      showSignInModel= false
+    getState(showSignInModel);
+    };
+  render(props) {
+
+    return (
+      <div className="bar">
+        <div>
+          <a
+            rel="noopener noreferrer"
+            className="mapple"
+            href="https://mapple.io/"
+            target="_blank"
+          >
+            <div className="titles no_select">
+              <div className="title_main">
+                <div className="logo">
+                  <img src={MappleLogo} alt="mapple logo" />
+                </div>
+                <div className="title_main_text">MAPPLE</div>
+                <div className="title_sub">Analyst</div>
+              </div>
+            </div>
+          </a>
+        </div>
+        <SignIn handleSubmit={() => {
+          console.log(this.props.values)
+        }} />
+        <SignUp/>
+       
+      </div>
+    );
+  }
 }
 
-export default Bar
+const mapStateToProps = state => ({
+  text: reducer(state),
+  values: getFormValues('signIn')(state) // from redux form 
+});
+export default connect(
+  mapStateToProps,
+)(Bar);
