@@ -25,6 +25,7 @@ class Bar extends Component {
     getState(showSignInModel);
     };
   render(props) {
+    const { signInValues, signUpValues } = this.props;
 
     return (
       <div className="bar">
@@ -46,10 +47,12 @@ class Bar extends Component {
             </div>
           </a>
         </div>
-        <SignIn handleSubmit={() => {
-          console.log(this.props.values)
+        <SignIn onSubmit={() => {
+          console.log(signInValues)
         }} />
-        <SignUp/>
+        <SignUp  onSubmit={() => {
+          console.log(signUpValues)
+        }}/>
        
       </div>
     );
@@ -58,8 +61,14 @@ class Bar extends Component {
 
 const mapStateToProps = state => ({
   text: reducer(state),
-  values: getFormValues('signIn')(state) // from redux form 
+  signInValues: getFormValues('signIn')(state),
+  signUpValues: getFormValues('signUp')(state)
+  // from redux form
 });
+
+
+
+
 export default connect(
   mapStateToProps,
 )(Bar);

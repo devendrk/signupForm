@@ -5,10 +5,17 @@ import Button from "../../button";
 import Modal from "react-modal";
 import "./SignIn.css";
 
+Modal.setAppElement('body')
+
 class SignIn extends Component {
   state = {
     isModelOpen: false
   };
+
+  // componentDidMount() {
+  //   Modal.setAppElement('body');
+  // }
+  
   openModel = () =>
     this.setState({
       isModelOpen: true
@@ -34,12 +41,14 @@ class SignIn extends Component {
                 component="input"
                 type="text"
                 name="userName"
-                placeholder="Username or email"
+                placeholder=" email"
+                autoComplete = "email"
               />
               <Field
                 component="input"
                 type="password"
                 name="password"
+                autoComplete = "password"
                 placeholder="Password"
               />
               <div className="btn-section">

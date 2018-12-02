@@ -8,6 +8,11 @@ class SignUp extends Component {
   state = {
     isModelOpen: false
   };
+
+  // componentDidMount() {
+  //   Modal.setAppElement('body');
+  // }
+  
   openModel = () =>
     this.setState({
       isModelOpen: true
@@ -28,7 +33,7 @@ class SignUp extends Component {
             isClosed={this.state.isModelOpen}
           >
             <h1>SignUp</h1> <br />
-            <form name="signUp">
+            <form name="signUp" onSubmit={this.props.handleSubmit}>
               <Field
                 component="input"
                 type="text"
@@ -40,15 +45,17 @@ class SignUp extends Component {
                 type="text"
                 name="email"
                 placeholder="email "
+                autoComplete = "password"
               />
               <Field
                 component="input"
                 type="password"
                 name="password"
                 placeholder="Password"
+                autoComplete = "password"
               />
               <div className="btn-section">
-                <Button className="custom-btn" label="Sign up" type="button" />
+                <Button className="custom-btn" label="Sign up" type="submit" />
                 <Button
                   className="custom-btn"
                   onClick={this.closeModel}
