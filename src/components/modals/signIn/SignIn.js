@@ -17,7 +17,7 @@ const SignIn = (props) => {
       <div className = "login-header">
         {props.children}
       </div>
-      <h3 className=" login-text">Log-in</h3> <br />
+      <h3 className=" login-text">Log in</h3> <br />
       <form name="signIn" onSubmit={props.handleSubmit}>
         <Field
           component="input"
