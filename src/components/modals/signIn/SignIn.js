@@ -14,14 +14,17 @@ const SignIn = (props) => {
   const { signInValues } = props;
   return (
     <div className="login-card">
-      <h3>Log-in</h3> <br />
+      <div className = "login-header">
+        {props.children}
+      </div>
+      <h3 className=" login-text">Log-in</h3> <br />
       <form name="signIn" onSubmit={props.handleSubmit}>
         <Field
           component="input"
           type="text"
           name="userName"
-          placeholder=" email"
-          autoComplete="email"
+          placeholder=" username "
+          autoComplete="username"
         />
         <Field
           component="input"
@@ -35,7 +38,7 @@ const SignIn = (props) => {
         </div>
       </form>
       <div className="login-help">
-        <a href="/">Register</a> • <a href="/">Forgot Password</a>
+        <p>Need help ?  <a href = "/">  Hello@mapple.fi</a></p>
       </div>
     </div>
   );
