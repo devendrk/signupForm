@@ -5,10 +5,8 @@ import { connect } from 'react-redux';
 import {reducer} from '../../../store/reducer';
 
 import Button from "../../button";
-import Modal from "react-modal";
 import "./SignIn.css";
 
-Modal.setAppElement('body')
 
 const SignIn = (props) => {
   const { signInValues } = props;
