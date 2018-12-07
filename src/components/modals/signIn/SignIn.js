@@ -52,9 +52,9 @@ class SignIn extends Component {
                 placeholder="Password"
               />
               <div className="btn-section">
-                <Button className="custom-btn" label="Sign In" type="submit" />
+                <Button className="custom-btn btn-green" label="Sign In" type="submit" />
                 <Button
-                  className="custom-btn"
+                  className="custom-btn btn-red"
                   onClick={this.closeModel}
                   label="cancel"
                   type="button"
@@ -66,9 +66,9 @@ class SignIn extends Component {
             </div>
           </Modal>
         ) : (
-          <div className="bar-right-section">
+          <div className="bar-right-section ">
             <Button
-              className="custom-btn"
+              className="custom-btn "
               label="Login"
               type="submit"
               onClick={this.openModel}

@@ -4,10 +4,11 @@
   flex-direction: column;
   padding: 20px 40px;
   width: 274px;
-  background-color: #f7f7f7;
+  background-color: white;
   margin: 120px auto 10px;
-  border-radius: 2px;
-  box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
+  border-radius: 5px;
+
+  box-shadow:  0 2px 6px rgba(0,0,0,0.2);
   overflow: hidden;
 }
 
@@ -50,6 +51,8 @@ input[type="password"]:hover {
   box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.1);
 }
 
+
+
 .login {
   text-align: center;
   font-size: 14px;
@@ -90,9 +93,9 @@ input[type="password"]:hover {
   transition: opacity ease 0.5s;
 }
 
-.login-card a:hover {
+/* .login-card a:hover {
   opacity: 1;
-}
+} */
 
 .login-help {
   width: 100%;
@@ -106,4 +109,12 @@ input[type="password"]:hover {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+}
+.btn-green {
+  background: #2ecc71;
+}
+
+btn-red{
+  background: red;
+
 }
