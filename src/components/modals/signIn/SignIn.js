@@ -4,45 +4,46 @@ import { Field, reduxForm } from 'redux-form';
 import "./SignIn.css";
 import Button from "../../button";
 
-
-
 class SignIn extends Component {
-  
-  renderInput({ input,label,type }){   
+
+  renderInput({ input, label, type }) {
     return (
-      
-      <div className = "filed">
-        <input {...input} placeholder = {label} />
+
+      <div className="filed">
+        <input {...input} placeholder={label} />
 
       </div>
     )
   }
 
-  onSubmit(formValues){
+  onSubmit(formValues) {
     console.log(formValues)
   }
 
   render() {
     return (
-      <div className ="login-card">
-            <div className = "login-header">
-              {this.props.children}
-             </div>
-          <h3 className=" login-text">Log in</h3> <br />
-          <form onSubmit = {this.props.handleSubmit(this.onSubmit)} >
-              <Field name = "username" type = "text"label = "Username" component = {this.renderInput} /> <br /> <br />
-              <Field name = "email"  type = "password"label = "password" component = {this.renderInput}/>
-              <div className="btn-section">
-                <Button className="custom-btn" label="Login"  type="submit" />
-              </div>
-            </form>
+      <div className="login-card">
+        <div className="login-header">
+          {this.props.children}
+        </div>
+        <h3 className=" login-text">Log in</h3> <br />
+        <form onSubmit={this.props.handleSubmit(this.onSubmit)} >
+          <Field name="username" type="text" label="Username" component={this.renderInput} /> 
+          <Field name="email" type="password" label="password" component={this.renderInput} />
+          <div className="btn-section">
+            <Button className="custom-btn" label="Login" type="submit" />
+          </div>
+          <div className="login-help">
+            <p>Need help ?  <a href = "/">  Hello@mapple.fi</a></p>
+         </div>
+        </form>
       </div>
     );
   }
 }
 
 export default reduxForm({
-  form : 'signIn'
+  form: 'signIn'
 })(SignIn);
 
 
