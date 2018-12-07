@@ -5,12 +5,15 @@ import SignIn from '../../components/modals/signIn/SignIn';
 
 
 class HomePag extends Component {
+    componentDidMount(){
+        console.log(window);
+    }
     render(props) {
         return (
-            <div>
+            <React.Fragment>
                 <Bar />
                 <SignIn />
-            </div>
+            </React.Fragment>
         );
     }
 }
