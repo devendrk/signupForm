@@ -5,15 +5,26 @@ import "./SignIn.css";
 import Button from "../../button";
 
 class SignIn extends Component {
-
-  renderInput({ input, label, type }) {
+  renderError ({error,touched}){
+    if(touched && error){
+      return (
+        <div className = "error-message">
+          <div className = "header">
+            {error}
+          </div>
+        </div>
+      );
+    }
+  }
+  renderInput = ({ input, label, meta })=> {
+    console.log(meta)
     return (
 
       <div className="filed">
-        <input {...input} placeholder={label} />
-
+        <input {...input} placeholder={label} type = {label} autoComplete = "off" />
+        {this.renderError(meta)}
       </div>
-    )
+    );
   }
 
   onSubmit(formValues) {
@@ -26,10 +37,11 @@ class SignIn extends Component {
         <div className="login-header">
           {this.props.children}
         </div>
-        <h3 className=" login-text">Log in</h3> <br />
+        <h3 className=" login-text">Log in</h3>
+
         <form onSubmit={this.props.handleSubmit(this.onSubmit)} >
-          <Field name="username" type="text" label="Username" component={this.renderInput} /> 
-          <Field name="email" type="password" label="password" component={this.renderInput} />
+          <Field name="userName" type="text" label="Username" component={this.renderInput} /> 
+          <Field name="password" type="password" label="password" component={this.renderInput} />
           <div className="btn-section">
             <Button className="custom-btn" label="Login" type="submit" />
           </div>
@@ -42,8 +54,23 @@ class SignIn extends Component {
   }
 }
 
+const validate = (formValues)=>{
+  const errors = {};
+
+  if(!formValues.userName) {
+    errors.userName = 'you must enter the username';
+  }
+
+  if (!formValues.password){
+    errors.password = "you must enter the password";
+  }
+
+  return errors
+};
+
 export default reduxForm({
-  form: 'signIn'
+  form: 'signIn',
+  validate
 })(SignIn);
 
 
