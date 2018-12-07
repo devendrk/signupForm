@@ -12,16 +12,6 @@ class SignIn extends Component {
       <div className="filed">
         <input {...input} placeholder={label} />
 
-<<<<<<< HEAD
-
-const SignIn = (props) => {
-  const { signInValues } = props;
-  return (
-    <div className="login-card">
-      <div className = "login-header">
-        {props.children}
-=======
->>>>>>> ab23beaa49af4c3807355631fca0e2d819128b0e
       </div>
     )
   }
@@ -48,14 +38,8 @@ const SignIn = (props) => {
          </div>
         </form>
       </div>
-<<<<<<< HEAD
-
-    </div>
-  );
-=======
     );
   }
->>>>>>> ab23beaa49af4c3807355631fca0e2d819128b0e
 }
 
 export default reduxForm({
