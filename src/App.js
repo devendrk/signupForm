@@ -14,6 +14,7 @@ const App =()=>(
           <SignIn>
             <Bar />
           </SignIn>
+          
         </div>
          {/*
         <Feature /> featuer page after sign in */ }
