@@ -1,81 +1,99 @@
-import React, { Component } from 'react';
-import { Field, reduxForm } from 'redux-form';
+import React, { Component } from "react";
+import { Field, reduxForm } from "redux-form";
+import Modal from "react-modal";
+import { connect } from "react-redux";
 
 import "./SignIn.css";
 import Button from "../../button";
+import { getAuth } from "../../../store/reducer";
+import * as actions from "../../../store/actions";
 
 class SignIn extends Component {
-  renderError ({error,touched}){
-    if(touched && error){
+  renderError({ error, touched }) {
+    if (touched && error) {
       return (
-        <div className = "error-message">
-          <div className = "header">
-            {error}
-          </div>
+        <div className="error-message">
+          <div className="header">{error}</div>
         </div>
       );
     }
   }
-  renderInput = ({ input, label, meta })=> {
-    console.log(meta)
+  renderInput = ({ input, label, meta }) => {
     return (
-
       <div className="filed">
-        <input {...input} placeholder={label} type = {label} autoComplete = "off" />
+        <input {...input} placeholder={label} type={label} autoComplete="off" />
         {this.renderError(meta)}
       </div>
     );
-  }
+  };
 
-  onSubmit(formValues) {
-    console.log(formValues)
+  onSubmit=()=>{
+    const { loginAuthAction, loginState } = this.props;
+    loginAuthAction(loginState);
   }
 
   render() {
+    const { loginState } = this.props
     return (
-      <div className="login-card">
-        <div className="login-header">
-          {this.props.children}
-        </div>
+      <Modal isOpen={loginState} className="login-card">
+        <div className="login-header">{this.props.children}</div>
+        <h5>Turku</h5>
+
         <h3 className=" login-text">Log in</h3>
 
-        <form onSubmit={this.props.handleSubmit(this.onSubmit)} >
-          <Field name="userName" type="text" label="Username" component={this.renderInput} /> 
-          <Field name="password" type="password" label="password" component={this.renderInput} />
+        <form onSubmit={this.props.handleSubmit(this.onSubmit)}>
+          <Field
+            name="userName"
+            type="text"
+            label="Username"
+            component={this.renderInput}
+          />
+          <Field
+            name="password"
+            type="password"
+            label="password"
+            component={this.renderInput}
+          />
           <div className="btn-section">
             <Button className="custom-btn" label="Login" type="submit" />
           </div>
           <div className="login-help">
-            <p>Need help ?  <a href = "/">  Hello@mapple.fi</a></p>
-         </div>
+            <p>
+              Need help ? <a href="/"> Hello@mapple.fi</a>
+            </p>
+          </div>
         </form>
-      </div>
+      </Modal>
     );
   }
 }
 
-const validate = (formValues)=>{
+const validate = formValues => {
   const errors = {};
 
-  if(!formValues.userName) {
-    errors.userName = 'you must enter the username';
+  if (!formValues.userName) {
+    errors.userName = "you must enter the username";
   }
 
-  if (!formValues.password){
+  if (!formValues.password) {
     errors.password = "you must enter the password";
   }
 
-  return errors
+  return errors;
 };
+const mapStateToProps = state => ({
+  loginState: getAuth(state),
+});
 
-export default reduxForm({
-  form: 'signIn',
-  validate
-})(SignIn);
-
-
-
-
+export default connect(
+  mapStateToProps,
+  actions
+)(
+  reduxForm({
+    form: "signIn",
+    validate
+  })(SignIn)
+);
 
 // import React from "react";
 // import { Field, reduxForm, getFormValues } from "redux-form";
@@ -85,7 +103,6 @@ export default reduxForm({
 
 // import Button from "../../button";
 // import "./SignIn.css";
-
 
 // const SignIn = (props) => {
 
@@ -122,12 +139,10 @@ export default reduxForm({
 //   );
 // }
 
-
 // const mapStateToProps = state => ({
 //   text: reducer(state),
 //   signInValues: getFormValues('signIn')(state),
 // });
-
 
 // const signInForm = reduxForm({
 //   form: "signIn"

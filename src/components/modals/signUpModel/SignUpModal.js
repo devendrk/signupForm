@@ -81,7 +81,8 @@ class SignUp extends Component {
 }
 
 const signInForm = reduxForm({
-  form: "signUp"
+  form: "signUp",
+  
 })(SignUp);
 
 export default signInForm;

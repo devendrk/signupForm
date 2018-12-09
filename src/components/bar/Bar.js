@@ -3,7 +3,7 @@ import React from "react";
 import "./Bar.css";
 import MappleLogo from "../../images/logo100x100.png";
 
-const Bar = () => (
+const Bar = ({children}) => (
   <div className="bar">
     <div className="titles no_select">
         <div className="title_main">
@@ -14,6 +14,7 @@ const Bar = () => (
           <div className="title_sub">Analyst</div>
       </div>
     
+      <div>{children}</div>
     </div>
   </div>
 );

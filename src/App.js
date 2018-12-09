@@ -1,24 +1,33 @@
-import React from 'react';
-import Bar from './components/bar/Bar';
- import SignIn from './components/modals/signIn/SignIn';
+import React from "react";
+import { connect } from "react-redux";
+
+
+import Bar from "./components/bar/Bar";
+import SignIn from "./components/modals/signIn/SignIn";
 // import SignOut from './components/signOut/SignOut';
-// import Feature from './components/Feature/Feature';
+import Feature from "./components/Feature/Feature";
+import { getAuth } from "./store/reducer";
 
-import './app.css'
+import "./app.css";
 
-
-
-const App =()=>(
-      <div className="app">
+const App = ({ isLoggedIn }) => {
+  return (
+    <div className="app">
+      {isLoggedIn ? (
         <div className="login-container">
           <SignIn>
             <Bar />
           </SignIn>
-          
         </div>
-         {/*
-        <Feature /> featuer page after sign in */ }
-      </div>
+      ) : (
+        <Feature />
+      )}
+    </div>
+  );
+};
 
-    )
-export default App
+const mapStateToProps = state => ({
+  isLoggedIn: getAuth(state)
+});
+
+export default connect(mapStateToProps)(App);
