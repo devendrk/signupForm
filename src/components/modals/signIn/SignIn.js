@@ -30,6 +30,7 @@ class SignIn extends Component {
   onSubmit=()=>{
     const { loginAuthAction, loginState } = this.props;
     loginAuthAction(loginState);
+    
   }
 
   render() {
