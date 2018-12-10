@@ -2,7 +2,7 @@ import React from "react";
 import { connect } from "react-redux";
 
 
-import Bar from "./components/bar/Bar";
+import Logo from "./components/logo";
 import SignIn from "./components/modals/signIn/SignIn";
 // import SignOut from './components/signOut/SignOut';
 import Feature from "./components/Feature/Feature";
@@ -16,7 +16,7 @@ const App = ({ isLoggedIn }) => {
       {isLoggedIn ? (
         <div className="login-container">
           <SignIn>
-            <Bar />
+            <Logo />
           </SignIn>
         </div>
       ) : (

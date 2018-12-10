@@ -5,11 +5,11 @@ import { connect } from "react-redux";
 
 import "./SignIn.css";
 import Button from "../../button";
-import { getAuth } from "../../../store/reducer";
+import { getAuth, checkAuth } from "../../../store/reducer";
 import * as actions from "../../../store/actions";
 
 class SignIn extends Component {
-  renderError({ error, touched }) {
+  renderError = ({ error, touched }) => {
     if (touched && error) {
       return (
         <div className="error-message">
@@ -17,7 +17,7 @@ class SignIn extends Component {
         </div>
       );
     }
-  }
+  };
   renderInput = ({ input, label, meta }) => {
     return (
       <div className="filed">
@@ -27,16 +27,16 @@ class SignIn extends Component {
     );
   };
 
-  onSubmit=()=>{
-    const { loginAuthAction, loginState } = this.props;
-    loginAuthAction(loginState);
-    
-  }
+  onSubmit = formValues => {
+    const { loginAuthAction, loginState, checkAuthAction } = this.props;
+    if (checkAuthAction(formValues).payload === true)
+      loginAuthAction(loginState);
+  };
 
   render() {
-    const { loginState } = this.props
+    const { loginState } = this.props;
     return (
-      <Modal isOpen={loginState} className="login-card">
+      <Modal isOpen={loginState} className="login-card"  ariaHideApp={false}>
         <div className="login-header">{this.props.children}</div>
         <h5>Turku</h5>
 
@@ -84,6 +84,7 @@ const validate = formValues => {
 };
 const mapStateToProps = state => ({
   loginState: getAuth(state),
+  checkAuthState: checkAuth(state)
 });
 
 export default connect(
@@ -95,58 +96,3 @@ export default connect(
     validate
   })(SignIn)
 );
-
-// import React from "react";
-// import { Field, reduxForm, getFormValues } from "redux-form";
-// import { connect } from 'react-redux';
-
-// import {reducer} from '../../../store/reducer';
-
-// import Button from "../../button";
-// import "./SignIn.css";
-
-// const SignIn = (props) => {
-
-//   const { signInValues } = props;
-//   return (
-//     <div className="login-card">
-//       <div className = "login-header">
-//         {props.children}
-//       </div>
-//       <h3 className=" login-text">Log in</h3> <br />
-//       <form name="signIn" onSubmit={props.handleSubmit}>
-//         <Field
-//           component="input"
-//           type="text"
-//           name="userName"
-//           placeholder=" username "
-//           autoComplete="username"
-//         />
-//         <Field
-//           component="input"
-//           type="password"
-//           name="password"
-//           autoComplete="password"
-//           placeholder="Password"
-//         />
-//         <div className="btn-section">
-//           <Button className="custom-btn" label="Login"  type="submit" onClick={()=> alert(signInValues)}/>
-//         </div>
-//       </form>
-//       <div className="login-help">
-//         <p>Need help ?  <a href = "/">  Hello@mapple.fi</a></p>
-//       </div>
-//     </div>
-//   );
-// }
-
-// const mapStateToProps = state => ({
-//   text: reducer(state),
-//   signInValues: getFormValues('signIn')(state),
-// });
-
-// const signInForm = reduxForm({
-//   form: "signIn"
-// })(SignIn);
-
-// export default connect(mapStateToProps)(signInForm);

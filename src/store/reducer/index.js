@@ -11,3 +11,4 @@ export const reducer = combineReducers({
 
 export const getFormValues = state => state.form;
 export const getAuth = state => state.auth.isLoggedIn;
+export const checkAuth = state => state.auth.isAuthorized;

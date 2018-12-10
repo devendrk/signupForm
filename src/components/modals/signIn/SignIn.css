@@ -20,6 +20,10 @@
 
 .login-header{
   margin-left: 50%;
+} 
+.login-header .title_main_text, .login-header .title_sub{
+  color:black;
+  
 }
 
 

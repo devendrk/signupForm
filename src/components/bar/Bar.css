@@ -1,8 +1,7 @@
 .bar {
-   background: rgb(14, 13, 13);
+  background: rgb(14, 13, 13);
   height: 50px;
 }
-
 
 .mapple {
   position: relative;
@@ -19,7 +18,7 @@
   display: block;
   width: 26px;
   height: 30px;
- left: 0;
+  left: 0;
 }
 
 .logo img {
@@ -47,12 +46,12 @@
   font-family: sansationregular;
   line-height: 30px;
   width: 170px;
-  align-content: center
+  align-content: center;
 }
 
 .title_main_text {
   bottom: -2px;
-  color: black;
+  color: white;
   display: block;
   font-size: 30px;
   font-family: sansationregular;
@@ -68,7 +67,12 @@
   font-size: 12px;
   font-weight: bolder;
   line-height: 1px;
-  color:black;
+  color: white;
   margin-left: 50px;
 }
 
+.title-container {
+  display: grid;
+  grid-template-columns: 1fr 6fr 1fr;
+  padding: 10px 5px 10px 20px;
+}
