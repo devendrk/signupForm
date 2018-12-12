@@ -1,12 +1,11 @@
 import React from "react";
 import { connect } from "react-redux";
-import { getAuth } from "../../store/reducer";
-import * as action from '../../store/actions';
+import { getAuth, loginAuthAction } from "../../store/reducer/signInModalReducer";
 import Bar from "../bar/Bar";
 import Button from "../button";
 import "./Feature.css";
 
-const Feature = ({ isLoggedIn, loginAuthAction }) => {
+const Feature = ({ isLoggedIn  }) => {
 return !isLoggedIn && (
       <div>
         <Bar>
@@ -22,7 +21,7 @@ return !isLoggedIn && (
 };
 
 const mapStateToProps = state => ({
-  isLoggedIn: getAuth(state)
+  isLoggedIn: getAuth(state.auth.isLoggedIn)
 });
 
-export default connect(mapStateToProps, action)(Feature);
+export default connect(mapStateToProps, loginAuthAction)(Feature);

@@ -5,10 +5,10 @@ import { connect } from "react-redux";
 
 import "./SignIn.css";
 import Button from "../../button";
-import { getAuth, checkAuth } from "../../../store/reducer";
-import * as actions from "../../../store/actions";
+import { getAuth, } from "../../../store/reducer/signInModalReducer";
 
 class SignIn extends Component {
+  
   renderError = ({ error, touched }) => {
     if (touched && error) {
       return (
@@ -83,13 +83,11 @@ const validate = formValues => {
   return errors;
 };
 const mapStateToProps = state => ({
-  loginState: getAuth(state),
-  checkAuthState: checkAuth(state)
+  loginState: getAuth(state.auth.isLoggedIn),
 });
 
 export default connect(
   mapStateToProps,
-  actions
 )(
   reduxForm({
     form: "signIn",
